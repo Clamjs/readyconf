@@ -10,10 +10,10 @@ exports.init = function(confFile, param) {
     }
 
     if (!fsLib.existsSync(confFile)) {
-        fsLib.writeFileSync(confFile, JSON.stringify(param, null, 4));
+        fsLib.writeFileSync(confFile, JSON.stringify(param, null, 4), {encoding:"utf-8"});
     }
     else {
-        param = merge(true, param, JSON.parse(fsLib.readFileSync(confFile)));
+        param = merge(true, param, JSON.parse(fsLib.readFileSync(confFile, {encoding:"utf-8"})));
     }
 
     return param;
