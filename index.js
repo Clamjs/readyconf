@@ -13,7 +13,7 @@ exports.init = function(confFile, param) {
         fsLib.writeFileSync(confFile, JSON.stringify(param, null, 4), {encoding:"utf-8"});
     }
     else {
-        param = merge(true, param, JSON.parse(fsLib.readFileSync(confFile, {encoding:"utf-8"})));
+        param = merge.recursive(param, JSON.parse(fsLib.readFileSync(confFile, {encoding:"utf-8"})));
     }
 
     return param;
